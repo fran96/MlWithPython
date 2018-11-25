@@ -1,6 +1,7 @@
 import numpy as np
 from sklearn.datasets import load_iris
 from sklearn.linear_model import Perceptron
+from matplotlib import pyplot as plt
 
 iris = load_iris()
 print(iris.data[:3], "\n")
@@ -79,3 +80,38 @@ for i in range(len(clf.coefs_)):
         print(i, j, weights, end=", ")
         print()
     print()
+
+# Intercepts_ is a list of bias vectors, where
+# the vector at index i represents the bias values added
+# to layer i + 1
+print("Bias values for first hidden layer:")
+print(clf.intercepts_[0])
+print("\nBias values for second hidden layer:")
+print(clf.intercepts_[1])
+
+result = clf.predict([[0, 0], [0, 1],
+                     [1, 0], [0, 1],
+                     [1, 1], [2., 2.],
+                     [1.3, 1.3], [2, 4.8]])
+
+prob_results = clf.predict_proba([[0, 0], [0, 1],
+                                 [1, 0], [0, 1],
+                                 [1, 1], [2., 2.],
+                                 [1.3, 1.3], [2, 4.8]])
+print('res: ',result)
+print('prob_results: ', prob_results)
+
+# Example 2
+
+npoints = 50
+X, Y = [], []
+
+# class 0
+X.append(np.random.uniform(low=-2.5, high=2.3, size=(npoints,)))
+Y.append(np.random.uniform(low=-1.7, high=2.8, size=(npoints,)))
+
+# class 1
+X.append(np.random.uniform(low=-7.2, high=-4.4, size=(npoints,)))
+Y.append(np.random.uniform(low=3, high=6.5, size=(npoints,)))
+learnset = []
+learnlabels = []
