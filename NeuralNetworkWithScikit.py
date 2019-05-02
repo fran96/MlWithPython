@@ -4,7 +4,7 @@ from sklearn.linear_model import Perceptron
 from matplotlib import pyplot as plt
 
 iris = load_iris()
-x = iris.data[:3];
+x = iris.data[:3]
 x
 print(iris.data[15:18], "\n")
 print(iris.data[37:40], "\n")
